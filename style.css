@@ -1578,6 +1578,12 @@ body { cursor: none; }
   margin-bottom: 48px;
 }
 
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .footer__brand p {
   font-size: .8125rem;
   color: var(--t4);
@@ -2659,7 +2665,7 @@ body { cursor: none; }
 }
 
 @media (max-width: 768px) {
-  .vl-hero { min-height: 90vh; padding-top: 80px; }
+  .vl-hero { min-height: 90vh; padding-top: 140px; }
   .vl-hero-headline { font-size: clamp(42px, 12vw, 72px) !important; }
   .vl-form-card { padding: 28px 20px; }
 }
