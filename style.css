@@ -2146,6 +2146,7 @@ body { cursor: none; }
               box-shadow var(--vl-duration-med) var(--vl-ease-out),
               border-color var(--vl-duration-med);
   cursor: pointer;
+  contain: layout paint;
 }
 
 .vl-product-card:hover {
@@ -2615,6 +2616,7 @@ body { cursor: none; }
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   transition: transform var(--vl-duration-med) var(--vl-ease-out), border-color var(--vl-duration-med);
+  contain: layout paint;
 }
 
 .vl-review-card:hover {
