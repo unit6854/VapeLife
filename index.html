@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VapeLife — Premium Smoke &amp; Vape Shop</title>
+  <meta name="description" content="Premium CBD, THCA, Vapes, Glass, Kratom, Hemp &amp; E-Juice. Browse online, reserve what you want, and pick it up ready at the counter.">
+
+  <!-- Preload critical assets -->
+  <link rel="preload" as="image" href="./hero-bg.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="./img/bg-why.webp" fetchpriority="low">
+  <link rel="preload" as="image" href="./img/bg-reviews.webp" fetchpriority="low">
+  <link rel="preload" as="image" href="./img/bg-footer.webp" fetchpriority="low">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<!-- Custom cursor & scroll progress (injected by WP body_open in theme) -->
+<div class="vl-cursor-dot" id="vlCursorDot"></div>
+<div class="vl-cursor-ring" id="vlCursorRing"></div>
+<div class="vl-scroll-progress" id="vlScrollProgress"></div>
+
+<!-- ANNOUNCEMENT TICKER -->
+<div class="ticker-bar">
+  <div class="ticker-track">
+    <span>🌿 CBD Monday — 20% OFF all CBD</span>
+    <span class="ticker-dot">·</span>
+    <span>💨 Vape Wednesday — Buy 2 Get 1 Free</span>
+    <span class="ticker-dot">·</span>
+    <span>🌸 THCA Friday — $10 off flower &amp; concentrates</span>
+    <span class="ticker-dot">·</span>
+    <span>🪄 Glass Saturday — 15% off all glassware</span>
+    <span class="ticker-dot">·</span>
+    <span>⚡ Reserve online — products held 24hrs, no payment needed</span>
+    <span class="ticker-dot">·</span>
+    <span>🌿 CBD Monday — 20% OFF all CBD</span>
+    <span class="ticker-dot">·</span>
+    <span>💨 Vape Wednesday — Buy 2 Get 1 Free</span>
+    <span class="ticker-dot">·</span>
+    <span>🌸 THCA Friday — $10 off flower &amp; concentrates</span>
+    <span class="ticker-dot">·</span>
+    <span>🪄 Glass Saturday — 15% off all glassware</span>
+    <span class="ticker-dot">·</span>
+    <span>⚡ Reserve online — products held 24hrs, no payment needed</span>
+    <span class="ticker-dot">·</span>
+  </div>
+</div>
+
+<!-- AGE GATE -->
+<div class="age-gate" id="ageGate">
+  <div class="age-gate__inner">
+    <div class="age-gate__logo">Vape<span>Life</span></div>
+    <h2>Age Verification</h2>
+    <p>You must be 21 years of age or older to enter this site.</p>
+    <div class="age-gate__buttons">
+      <button class="btn btn--primary btn--lg" id="ageYes">Yes, I'm 21+</button>
+      <button class="btn btn--ghost btn--lg" id="ageNo">No, exit</button>
+    </div>
+    <p class="age-gate__fine">By entering you agree to our <a href="#">Terms</a> and <a href="#">Age Policy</a>.</p>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="header" id="header">
+  <div class="container header__inner">
+
+    <a href="./" class="logo" id="vlLogo">
+      <span class="logo__icon" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="13" cy="13" r="11.5" stroke="#3DFF8F" stroke-width="1.2" class="logo-ring"/>
+          <path d="M7 17 L13 7 L19 17" stroke="#3DFF8F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="logo-v"/>
+          <path d="M10 13 L13 7 L16 13" stroke="#3DFF8F" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity=".45" class="logo-v2"/>
+          <circle cx="13" cy="7" r="1.6" fill="#3DFF8F" class="logo-dot"/>
+        </svg>
+      </span>
+      <span class="logo__wordmark"><span class="logo__vape">Vape</span><em>Life</em></span>
+    </a>
+
+    <nav class="nav">
+      <a href="./" class="nav__link">Home</a>
+
+      <div class="nav__dropdown">
+        <button class="nav__link nav__link--drop">
+          Shop
+          <svg width="11" height="7" viewBox="0 0 11 7" fill="none"><path d="M1 1L5.5 5.5L10 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="dropdown-menu">
+          <div class="dropdown-grid">
+            <a href="#shop" class="drop-item" data-vl-category="CBD">
+              <span class="drop-icon" style="background:rgba(34,197,94,.12);color:#22c55e">🌿</span>
+              <div><strong>CBD</strong><span>Oils, gummies, topicals</span></div>
+            </a>
+            <a href="#shop" class="drop-item" data-vl-category="THCA">
+              <span class="drop-icon" style="background:rgba(168,85,247,.12);color:#a855f7">🌸</span>
+              <div><strong>THCA</strong><span>Flower, pre-rolls, wax</span></div>
+            </a>
+            <a href="#shop" class="drop-item" data-vl-category="Vapes">
+              <span class="drop-icon" style="background:rgba(59,130,246,.12);color:#3b82f6">💨</span>
+              <div><strong>Vapes</strong><span>Devices, carts, pods</span></div>
+            </a>
+            <a href="#shop" class="drop-item" data-vl-category="Glass">
+              <span class="drop-icon" style="background:rgba(6,182,212,.12);color:#06b6d4">🪄</span>
+              <div><strong>Glass</strong><span>Pipes, bubblers, rigs</span></div>
+            </a>
+            <a href="#shop" class="drop-item" data-vl-category="Kratom">
+              <span class="drop-icon" style="background:rgba(245,158,11,.12);color:#f59e0b">🌱</span>
+              <div><strong>Kratom</strong><span>Powder, caps, extracts</span></div>
+            </a>
+            <a href="#shop" class="drop-item" data-vl-category="Hemp">
+              <span class="drop-icon" style="background:rgba(132,204,22,.12);color:#84cc16">🌾</span>
+              <div><strong>Hemp</strong><span>Flower, oils, edibles</span></div>
+            </a>
+            <a href="#shop" class="drop-item" data-vl-category="E-Juice">
+              <span class="drop-icon" style="background:rgba(236,72,153,.12);color:#ec4899">💧</span>
+              <div><strong>E-Juice</strong><span>Salts, freebase, flavors</span></div>
+            </a>
+            <a href="#shop" class="drop-item" data-vl-category="Accessories">
+              <span class="drop-icon" style="background:rgba(249,115,22,.12);color:#f97316">🧰</span>
+              <div><strong>Accessories</strong><span>Grinders, papers, lighters</span></div>
+            </a>
+          </div>
+          <div class="dropdown-footer">
+            <a href="#shop" data-vl-category="all">View All Products &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <a href="#deals" class="nav__link">Deals</a>
+      <a href="#reserve" class="nav__link">Reserve</a>
+      <a href="#about" class="nav__link">About</a>
+      <a href="#contact" class="nav__link">Contact</a>
+    </nav>
+
+    <div class="header__right">
+      <button class="icon-btn" aria-label="Search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
+      <a href="#reserve" class="btn btn--primary btn--sm nav-cta">Reserve a Product</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="./">Home</a>
+  <a href="#shop">Shop</a>
+  <a href="#deals">Deals</a>
+  <a href="#reserve">Reserve</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════════════ -->
+<section class="vl-hero" id="hero">
+
+  <div class="vl-hero-bg">
+    <img src="./hero-bg.webp" alt="" aria-hidden="true" fetchpriority="high" loading="eager" />
+    <div class="vl-hero-overlay"></div>
+    <canvas class="vl-hero-canvas" id="vlHeroCanvas"></canvas>
+  </div>
+
+  <div class="vl-container vl-hero-content">
+
+    <div class="vl-hero-eyebrow">
+      <span class="vl-badge-dot"></span>
+      Now Open &bull; Your Local Life Shop
+    </div>
+
+    <h1 class="vl-hero-headline">
+      <span class="vl-line">Elevate</span>
+      <span class="vl-line vl-italic">Every</span>
+      <span class="vl-line">Session.</span>
+    </h1>
+
+    <p class="vl-hero-subtext">
+      Premium CBD, THCA, Vapes, Glass, Kratom, Hemp &amp; E-Juice.
+      Browse online, reserve what you want, and pick it up ready at the counter.
+    </p>
+
+    <div class="vl-hero-actions">
+      <a href="#shop" class="vl-btn-primary">Shop Now &rarr;</a>
+      <a href="#reserve" class="vl-btn-ghost">Reserve a Product</a>
+    </div>
+
+    <div class="vl-hero-stats">
+      <div class="vl-stat" data-vl-count="500" data-vl-suffix="+">
+        <span class="vl-stat-number">500+</span>
+        <span class="vl-stat-label">Products</span>
+      </div>
+      <div class="vl-stat-divider"></div>
+      <div class="vl-stat" data-vl-count="4.9" data-vl-suffix="&#9733;" data-vl-decimal="1">
+        <span class="vl-stat-number">4.9&#9733;</span>
+        <span class="vl-stat-label">Avg Rating</span>
+      </div>
+      <div class="vl-stat-divider"></div>
+      <div class="vl-stat">
+        <span class="vl-stat-number">Free</span>
+        <span class="vl-stat-label">Reservations</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="vl-scroll-hint">
+    <span>Scroll</span>
+    <div class="vl-scroll-line"></div>
+  </div>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     CATEGORY BAR
+═══════════════════════════════════════════════════════ -->
+<div class="vl-category-bar" id="vlCategoryBar">
+  <div class="vl-container">
+    <div class="vl-category-pills">
+      <button class="vl-category-pill vl-active" data-vl-category="all">All</button>
+      <button class="vl-category-pill" data-vl-category="CBD">CBD</button>
+      <button class="vl-category-pill" data-vl-category="THCA">THCA</button>
+      <button class="vl-category-pill" data-vl-category="Vapes">Vapes</button>
+      <button class="vl-category-pill" data-vl-category="Glass">Glass</button>
+      <button class="vl-category-pill" data-vl-category="Kratom">Kratom</button>
+      <button class="vl-category-pill" data-vl-category="Hemp">Hemp</button>
+      <button class="vl-category-pill" data-vl-category="E-Juice">E-Juice</button>
+      <button class="vl-category-pill" data-vl-category="Accessories">Accessories</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     PRODUCTS
+═══════════════════════════════════════════════════════ -->
+<section class="vl-section" id="shop">
+  <div class="vl-container">
+
+    <span class="vl-section-label" data-vl-reveal>Our Selection</span>
+    <h2 class="vl-section-title" data-vl-reveal>Featured <em>Products</em></h2>
+    <p class="vl-section-sub" data-vl-reveal>Handpicked quality from trusted brands. All products are third-party lab tested.</p>
+
+    <div class="vl-product-grid">
+
+      <article class="vl-product-card" data-vl-reveal data-vl-delay="1" data-vl-category="CBD">
+        <div class="vl-card-image-wrap">
+          <img class="vl-card-image" src="./img/cbd-oil.webp" alt="Full Spectrum CBD Oil" loading="lazy" />
+          <div class="vl-card-hover-cta">
+            <button class="vl-btn-primary btn--reserve" data-product="Full Spectrum CBD Oil" data-price="$39.99">Reserve</button>
+          </div>
+        </div>
+        <div class="vl-card-body">
+          <span class="vl-card-category" style="color:#22c55e;background:rgba(34,197,94,.1)">CBD</span>
+          <h3 class="vl-card-name">Full Spectrum CBD Oil</h3>
+          <p class="vl-card-desc">1000mg · 30ml · Premium hemp extract</p>
+          <div class="vl-card-footer">
+            <span class="vl-card-price">$39.99</span>
+            <button class="vl-reserve-icon-btn btn--reserve" aria-label="Reserve" data-product="Full Spectrum CBD Oil" data-price="$39.99">+</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="vl-product-card" data-vl-reveal data-vl-delay="2" data-vl-category="THCA">
+        <div class="vl-card-image-wrap">
+          <img class="vl-card-image" src="./img/thca-flower.webp" alt="THCA Flower — Exotic OG" loading="lazy" />
+          <div class="vl-card-hover-cta">
+            <button class="vl-btn-primary btn--reserve" data-product="THCA Flower — Exotic OG" data-price="$49.99">Reserve</button>
+          </div>
+        </div>
+        <div class="vl-card-body">
+          <span class="vl-card-category" style="color:#a855f7;background:rgba(168,85,247,.1)">THCA</span>
+          <h3 class="vl-card-name">THCA Flower — Exotic OG</h3>
+          <p class="vl-card-desc">3.5g · Indoor Grown · 26% THCA</p>
+          <div class="vl-card-footer">
+            <span class="vl-card-price">$49.99</span>
+            <button class="vl-reserve-icon-btn btn--reserve" aria-label="Reserve" data-product="THCA Flower — Exotic OG" data-price="$49.99">+</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="vl-product-card" data-vl-reveal data-vl-delay="3" data-vl-category="Vapes">
+        <div class="vl-card-image-wrap">
+          <img class="vl-card-image" src="./img/vape.webp" alt="Elf Bar 5000 Disposable" loading="lazy" />
+          <span class="vl-badge">🔥 Best Seller</span>
+          <div class="vl-card-hover-cta">
+            <button class="vl-btn-primary btn--reserve" data-product="Elf Bar 5000 Disposable" data-price="$19.99">Reserve</button>
+          </div>
+        </div>
+        <div class="vl-card-body">
+          <span class="vl-card-category" style="color:#3b82f6;background:rgba(59,130,246,.1)">Vapes</span>
+          <h3 class="vl-card-name">Elf Bar 5000 Disposable</h3>
+          <p class="vl-card-desc">5000 puffs · Many flavors · 5% Nic</p>
+          <div class="vl-card-footer">
+            <span class="vl-card-price">$19.99</span>
+            <button class="vl-reserve-icon-btn btn--reserve" aria-label="Reserve" data-product="Elf Bar 5000 Disposable" data-price="$19.99">+</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="vl-product-card" data-vl-reveal data-vl-delay="4" data-vl-category="Glass">
+        <div class="vl-card-image-wrap">
+          <img class="vl-card-image" src="./img/glass.webp" alt="Beaker Base Water Pipe" loading="lazy" />
+          <div class="vl-card-hover-cta">
+            <button class="vl-btn-primary btn--reserve" data-product="Beaker Base Water Pipe" data-price="$74.99">Reserve</button>
+          </div>
+        </div>
+        <div class="vl-card-body">
+          <span class="vl-card-category" style="color:#06b6d4;background:rgba(6,182,212,.1)">Glass</span>
+          <h3 class="vl-card-name">Beaker Base Water Pipe</h3>
+          <p class="vl-card-desc">12&Prime; · Borosilicate · Ice catcher</p>
+          <div class="vl-card-footer">
+            <span class="vl-card-price">$74.99</span>
+            <button class="vl-reserve-icon-btn btn--reserve" aria-label="Reserve" data-product="Beaker Base Water Pipe" data-price="$74.99">+</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="vl-product-card" data-vl-reveal data-vl-delay="5" data-vl-category="Kratom">
+        <div class="vl-card-image-wrap">
+          <img class="vl-card-image" src="./img/kratom.webp" alt="Maeng Da Kratom Powder" loading="lazy" />
+          <div class="vl-card-hover-cta">
+            <button class="vl-btn-primary btn--reserve" data-product="Maeng Da Kratom Powder" data-price="$29.99">Reserve</button>
+          </div>
+        </div>
+        <div class="vl-card-body">
+          <span class="vl-card-category" style="color:#f59e0b;background:rgba(245,158,11,.1)">Kratom</span>
+          <h3 class="vl-card-name">Maeng Da Kratom Powder</h3>
+          <p class="vl-card-desc">250g · Premium grade · Red vein</p>
+          <div class="vl-card-footer">
+            <span class="vl-card-price">$29.99</span>
+            <button class="vl-reserve-icon-btn btn--reserve" aria-label="Reserve" data-product="Maeng Da Kratom Powder" data-price="$29.99">+</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="vl-product-card" data-vl-reveal data-vl-delay="6" data-vl-category="E-Juice">
+        <div class="vl-card-image-wrap">
+          <img class="vl-card-image" src="./img/ejuice.webp" alt="Naked 100 Salt E-Liquid" loading="lazy" />
+          <div class="vl-card-hover-cta">
+            <button class="vl-btn-primary btn--reserve" data-product="Naked 100 Salt E-Liquid" data-price="$15.99">Reserve</button>
+          </div>
+        </div>
+        <div class="vl-card-body">
+          <span class="vl-card-category" style="color:#ec4899;background:rgba(236,72,153,.1)">E-Juice</span>
+          <h3 class="vl-card-name">Naked 100 Salt E-Liquid</h3>
+          <p class="vl-card-desc">30ml · 50mg nic salt · Tropical blend</p>
+          <div class="vl-card-footer">
+            <span class="vl-card-price">$15.99</span>
+            <button class="vl-reserve-icon-btn btn--reserve" aria-label="Reserve" data-product="Naked 100 Salt E-Liquid" data-price="$15.99">+</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="vl-product-card" data-vl-reveal data-vl-delay="7" data-vl-category="THCA">
+        <div class="vl-card-image-wrap">
+          <img class="vl-card-image" src="./img/diamonds.webp" alt="THCA Diamond Sauce" loading="lazy" />
+          <span class="vl-badge">⚡ New</span>
+          <div class="vl-card-hover-cta">
+            <button class="vl-btn-primary btn--reserve" data-product="THCA Diamond Sauce" data-price="$59.99">Reserve</button>
+          </div>
+        </div>
+        <div class="vl-card-body">
+          <span class="vl-card-category" style="color:#a855f7;background:rgba(168,85,247,.1)">THCA</span>
+          <h3 class="vl-card-name">THCA Diamond Sauce</h3>
+          <p class="vl-card-desc">1g · Live resin · 95%+ purity</p>
+          <div class="vl-card-footer">
+            <span class="vl-card-price">$59.99</span>
+            <button class="vl-reserve-icon-btn btn--reserve" aria-label="Reserve" data-product="THCA Diamond Sauce" data-price="$59.99">+</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="vl-product-card" data-vl-reveal data-vl-delay="8" data-vl-category="Hemp">
+        <div class="vl-card-image-wrap">
+          <img class="vl-card-image" src="./img/gummies.webp" alt="Hemp CBD Gummies" loading="lazy" />
+          <div class="vl-card-hover-cta">
+            <button class="vl-btn-primary btn--reserve" data-product="Hemp CBD Gummies" data-price="$34.99">Reserve</button>
+          </div>
+        </div>
+        <div class="vl-card-body">
+          <span class="vl-card-category" style="color:#84cc16;background:rgba(132,204,22,.1)">Hemp</span>
+          <h3 class="vl-card-name">Hemp CBD Gummies</h3>
+          <p class="vl-card-desc">30ct · 25mg each · Assorted flavors</p>
+          <div class="vl-card-footer">
+            <span class="vl-card-price">$34.99</span>
+            <button class="vl-reserve-icon-btn btn--reserve" aria-label="Reserve" data-product="Hemp CBD Gummies" data-price="$34.99">+</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="vl-products-more" data-vl-reveal>
+      <a href="#reserve" class="vl-btn-ghost">Reserve Any Product &rarr;</a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     DAILY DEALS
+═══════════════════════════════════════════════════════ -->
+<section class="vl-deals-section vl-section vl-section--bg" id="deals">
+  <div class="vl-section-bg-img" style="background-image:url('./img/bg-why.webp'); background-position: center 30%;"></div>
+  <div class="vl-section-bg-overlay"></div>
+  <div class="vl-container" style="position:relative;z-index:2;">
+
+    <span class="vl-section-label" data-vl-reveal>Save Big</span>
+    <h2 class="vl-section-title" data-vl-reveal>A new special <em>every day.</em></h2>
+    <p class="vl-section-sub" data-vl-reveal>No coupon needed. Just come in.</p>
+
+    <div class="vl-deals-grid">
+
+      <article class="vl-deal-card" data-deal-day="1" data-vl-reveal data-vl-delay="1">
+        <div class="vl-deal-watermark">MON</div>
+        <span class="vl-deal-icon">🌿</span>
+        <div>
+          <span class="vl-deal-day">Monday</span>
+          <h3 class="vl-deal-title">CBD Monday</h3>
+          <p class="vl-deal-desc">20% off all CBD oils, gummies &amp; topicals.</p>
+          <a href="#shop" class="vl-deal-link">Shop Monday &rarr;</a>
+        </div>
+      </article>
+
+      <article class="vl-deal-card" data-deal-day="3" data-vl-reveal data-vl-delay="2">
+        <div class="vl-deal-watermark">WED</div>
+        <span class="vl-deal-icon">💨</span>
+        <div>
+          <span class="vl-deal-day">Wednesday</span>
+          <h3 class="vl-deal-title">Vape Wednesday</h3>
+          <p class="vl-deal-desc">Buy 2 disposables, get 1 free. All brands.</p>
+          <a href="#shop" class="vl-deal-link">Shop Wednesday &rarr;</a>
+        </div>
+      </article>
+
+      <article class="vl-deal-card" data-deal-day="5" data-vl-reveal data-vl-delay="3">
+        <div class="vl-deal-watermark">FRI</div>
+        <span class="vl-deal-icon">✨</span>
+        <div>
+          <span class="vl-deal-day">Friday</span>
+          <h3 class="vl-deal-title">THCA Friday</h3>
+          <p class="vl-deal-desc">15% off all THCA flower, pre-rolls &amp; wax.</p>
+          <a href="#shop" class="vl-deal-link">Shop Friday &rarr;</a>
+        </div>
+      </article>
+
+      <article class="vl-deal-card" data-deal-day="6" data-vl-reveal data-vl-delay="4">
+        <div class="vl-deal-watermark">SAT</div>
+        <span class="vl-deal-icon">🪩</span>
+        <div>
+          <span class="vl-deal-day">Saturday</span>
+          <h3 class="vl-deal-title">Glass Saturday</h3>
+          <p class="vl-deal-desc">5% off all glass — pipes, bubblers &amp; rigs.</p>
+          <a href="#shop" class="vl-deal-link">Shop Saturday &rarr;</a>
+        </div>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     RESERVATION FORM
+═══════════════════════════════════════════════════════ -->
+<section class="vl-reserve-section vl-section" id="reserve">
+  <div class="vl-container">
+    <div class="vl-reserve-grid">
+
+      <div data-vl-reveal="left">
+        <span class="vl-section-label">Skip the Wait</span>
+        <h2 class="vl-section-title">Reserve Before<br><em>You Arrive.</em></h2>
+        <p class="vl-reserve-desc">
+          Browse, pick what you want, and we'll have it ready at the counter.
+          No payment required upfront — just show up.
+        </p>
+        <ul class="vl-reserve-benefits">
+          <li>No upfront payment required</li>
+          <li>Products held for 24 hours</li>
+          <li>Ready at the counter when you arrive</li>
+          <li>Cancel anytime — no hassle</li>
+        </ul>
+      </div>
+
+      <div class="vl-form-card" data-vl-reveal="right">
+        <h3 style="font-family:var(--fd);font-size:22px;font-weight:400;color:var(--t1);margin-bottom:28px;">Request a Reservation</h3>
+        <!-- FORM: replace YOUR_FORM_ID with your Formspree form ID (formspree.io) -->
+        <form id="reserveForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div class="vl-form-field">
+            <label class="vl-form-label" for="vl-name">Your Name</label>
+            <input class="vl-form-input" type="text" id="vl-name" name="name" placeholder="Jane Smith" required />
+          </div>
+          <div class="vl-form-field">
+            <label class="vl-form-label" for="vl-phone">Phone Number</label>
+            <input class="vl-form-input" type="tel" id="vl-phone" name="phone" placeholder="(555) 000-0000" required />
+          </div>
+          <div class="vl-form-field">
+            <label class="vl-form-label" for="vl-product">Product(s) You Want</label>
+            <textarea class="vl-form-input vl-form-textarea ftextarea" id="vl-product" name="product" placeholder="e.g. THCA Flower Exotic OG, 3.5g" rows="3" required></textarea>
+          </div>
+          <div class="vl-form-field">
+            <label class="vl-form-label" for="vl-date">Pickup Date</label>
+            <input class="vl-form-input" type="date" id="vl-date" name="date" />
+          </div>
+          <button type="submit" id="reserveBtn" class="vl-btn-primary" style="width:100%;justify-content:center;font-size:15px;padding:16px 28px;">
+            Reserve Now &rarr;
+          </button>
+          <p id="reserveMsg" class="vl-form-disclaimer" style="display:none;color:var(--green);"></p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     WHY VAPELIFE
+═══════════════════════════════════════════════════════ -->
+<section class="vl-section" id="about" style="background:#0A0A0A;">
+  <div class="vl-container">
+
+    <span class="vl-section-label" data-vl-reveal>Why VapeLife</span>
+    <h2 class="vl-section-title" data-vl-reveal>The VapeLife <em>Difference</em></h2>
+    <p class="vl-section-sub" data-vl-reveal>We're not just a store — we're your local experts in everything smoke, vape, and beyond.</p>
+
+    <div class="vl-why-grid">
+
+      <div class="vl-why-card" data-vl-reveal data-vl-delay="1">
+        <div class="vl-why-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <h3 class="vl-why-title">Lab-Tested Products</h3>
+        <p class="vl-why-desc">Every product we carry is third-party lab tested. You'll know exactly what you're getting.</p>
+      </div>
+
+      <div class="vl-why-card" data-vl-reveal data-vl-delay="2">
+        <div class="vl-why-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3 class="vl-why-title">Reserve in 60 Seconds</h3>
+        <p class="vl-why-desc">Fill out our quick form online and your product will be waiting at the counter when you arrive.</p>
+      </div>
+
+      <div class="vl-why-card" data-vl-reveal data-vl-delay="3">
+        <div class="vl-why-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3 class="vl-why-title">Expert Local Staff</h3>
+        <p class="vl-why-desc">Our team lives and breathes this stuff. Ask us anything — we're here to help, not just sell.</p>
+      </div>
+
+      <div class="vl-why-card" data-vl-reveal data-vl-delay="4">
+        <div class="vl-why-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3 class="vl-why-title">Best Prices Around</h3>
+        <p class="vl-why-desc">We price-match and run daily deals so you always get the best value on your favorites.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     REVIEWS
+═══════════════════════════════════════════════════════ -->
+<section class="vl-section vl-section--bg" id="reviews">
+  <div class="vl-section-bg-img" style="background-image:url('./img/bg-reviews.webp');"></div>
+  <div class="vl-section-bg-overlay"></div>
+  <div class="vl-container" style="position:relative;z-index:2;">
+
+    <span class="vl-section-label" data-vl-reveal>What Guests Say</span>
+    <h2 class="vl-section-title" data-vl-reveal>Customer Reviews</h2>
+
+    <div class="vl-reviews-summary" data-vl-reveal>
+      <span class="vl-reviews-score">4.9</span>
+      <span class="vl-reviews-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+      <span class="vl-reviews-count">Based on 200+ reviews</span>
+    </div>
+
+    <div class="vl-reviews-grid">
+
+      <article class="vl-review-card" data-vl-reveal data-vl-delay="1">
+        <div class="vl-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="vl-review-text">"Best smoke shop in town, hands down. Staff always knows what you need. Reserve feature is a game-changer."</p>
+        <div class="vl-review-author">
+          <div class="vl-review-avatar">JM</div>
+          <div>
+            <div class="vl-review-name">James M.</div>
+            <div class="vl-review-date">2 weeks ago</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="vl-review-card" data-vl-reveal data-vl-delay="2">
+        <div class="vl-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="vl-review-text">"Found my THCA strain online, reserved it, no wait at the counter. No fuss, no hassle. Will be back every single week."</p>
+        <div class="vl-review-author">
+          <div class="vl-review-avatar">SK</div>
+          <div>
+            <div class="vl-review-name">Sarah K.</div>
+            <div class="vl-review-date">1 month ago</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="vl-review-card" data-vl-reveal data-vl-delay="3">
+        <div class="vl-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="vl-review-text">"Great prices, always stocked on my favorite vapes, and the daily deals are legit. CBD Monday saves me money every single week."</p>
+        <div class="vl-review-author">
+          <div class="vl-review-avatar">TR</div>
+          <div>
+            <div class="vl-review-name">Tyler R.</div>
+            <div class="vl-review-date">3 weeks ago</div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- NEWSLETTER -->
+<section class="newsletter" id="contact">
+  <div class="container newsletter__inner">
+    <div class="newsletter__text">
+      <h2>Stay in the Loop</h2>
+      <p>Get notified about new products, restocks, and exclusive deals.</p>
+    </div>
+    <form class="newsletter__form" id="newsletterForm">
+      <input type="email" placeholder="Your email address" class="finput" required>
+      <button type="submit" class="btn btn--primary">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer footer--bg">
+  <div class="footer__bg-img" style="background-image:url('./img/bg-footer.webp');"></div>
+  <div class="footer__bg-overlay"></div>
+  <div class="container" style="position:relative;z-index:2;">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <div class="logo">Vape<span>Life</span></div>
+        <p>Your local smoke &amp; vape shop. Premium products, expert staff, and the best prices in town.</p>
+        <div class="footer__social">
+          <a href="https://www.instagram.com/4everecig/" target="_blank" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="#" aria-label="Google Maps">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer__links">
+        <div class="fcol">
+          <h4>Shop</h4>
+          <div class="fcol__grid">
+            <a href="#shop" data-vl-category="CBD">CBD</a>
+            <a href="#shop" data-vl-category="THCA">THCA</a>
+            <a href="#shop" data-vl-category="Vapes">Vapes</a>
+            <a href="#shop" data-vl-category="Glass">Glass</a>
+            <a href="#shop" data-vl-category="Kratom">Kratom</a>
+            <a href="#shop" data-vl-category="Hemp">Hemp</a>
+            <a href="#shop" data-vl-category="E-Juice">E-Juice</a>
+            <a href="#shop" data-vl-category="Accessories">Accessories</a>
+          </div>
+        </div>
+        <div class="fcol">
+          <h4>Quick Links</h4>
+          <a href="#">Home</a>
+          <a href="#deals">Daily Deals</a>
+          <a href="#reserve">Reserve a Product</a>
+          <a href="#about">About Us</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="fcol">
+          <h4>Hours &amp; Location</h4>
+          <div class="footer__hours">
+            <strong>Address</strong>
+            123 Main St, Nashville, TN
+            <strong style="margin-top:14px">Store Hours</strong>
+            Mon–Sat: 9am – 9pm<br>
+            Sunday: 11am – 7pm
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="footer__bottom-inner">
+        <p>&copy; 2026 VapeLife. All rights reserved. Must be 21+ to purchase.</p>
+        <div class="footer__legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+          <a href="#">Age Policy</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="./js/main.js"></script>
+</body>
+</html>
