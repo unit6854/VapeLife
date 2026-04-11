@@ -224,7 +224,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var W, H, particles = [];
 
     // Reduce particle count on mobile for performance
-    var PARTICLE_COUNT = window.innerWidth < 768 ? 20 : 60;
+    var PARTICLE_COUNT = window.innerWidth < 768 ? 10 : 35;
 
     function resizeCanvas() {
       W = canvas.width  = canvas.offsetWidth;
@@ -274,6 +274,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var particleRafId;
 
+    var particlesActive = true;
+
     function animateParticles() {
       ctx.clearRect(0, 0, W, H);
       particles.forEach(function (p) { p.update(); p.draw(); });
@@ -281,10 +283,22 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     animateParticles();
 
+    // Pause when hero section is scrolled fully out of view
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) {
+          if (!particlesActive) { particlesActive = true; animateParticles(); }
+        } else {
+          particlesActive = false;
+          cancelAnimationFrame(particleRafId);
+        }
+      }, { threshold: 0 }).observe(canvas.closest('.vl-hero') || canvas);
+    }
+
     document.addEventListener('visibilitychange', function () {
       if (document.hidden) {
         cancelAnimationFrame(particleRafId);
-      } else {
+      } else if (particlesActive) {
         animateParticles();
       }
     });

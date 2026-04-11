@@ -6,16 +6,14 @@
   <title>VapeLife — Premium Smoke &amp; Vape Shop</title>
   <meta name="description" content="Premium CBD, THCA, Vapes, Glass, Kratom, Hemp &amp; E-Juice. Browse online, reserve what you want, and pick it up ready at the counter.">
 
-  <!-- Preload critical assets -->
+  <!-- Preload LCP hero image only — below-fold bg images load on demand -->
   <link rel="preload" as="image" href="./hero-bg.webp" fetchpriority="high">
-  <link rel="preload" as="image" href="./img/bg-why.webp" fetchpriority="low">
-  <link rel="preload" as="image" href="./img/bg-reviews.webp" fetchpriority="low">
-  <link rel="preload" as="image" href="./img/bg-footer.webp" fetchpriority="low">
 
-  <!-- Fonts -->
+  <!-- Fonts — non-render-blocking -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap"></noscript>
 
   <!-- Styles -->
   <link rel="stylesheet" href="./style.css">
