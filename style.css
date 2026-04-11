@@ -2852,3 +2852,68 @@ body { cursor: none; }
 #shop    { background: var(--bg-base); }
 #deals   { background: var(--bg-base); }
 #reviews { background: var(--bg-base); }
+
+/* ─── MAP / LOCATION SECTION ─────────────────────────────────── */
+.vl-location-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 48px;
+  align-items: start;
+  margin-top: 48px;
+  padding-bottom: clamp(60px,8vw,100px);
+}
+@media (max-width: 768px) {
+  .vl-location-grid { grid-template-columns: 1fr; }
+  .vl-map-wrap { order: -1; }
+}
+
+.vl-location-info {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.vl-location-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.vl-location-icon {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: var(--r-sm);
+  background: var(--green-glow);
+  border: 1px solid var(--green-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--green);
+}
+.vl-location-item > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.vl-location-item strong {
+  font-family: var(--fd);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--green);
+}
+.vl-location-item a,
+.vl-location-item span {
+  font-size: 15px;
+  color: var(--t2);
+  text-decoration: none;
+  line-height: 1.6;
+}
+.vl-location-item a:hover { color: var(--t1); }
+
+.vl-map-wrap iframe {
+  display: block;
+  border-radius: var(--r-lg);
+  outline: 1px solid var(--glass-border);
+}
