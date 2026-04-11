@@ -160,25 +160,9 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('[data-vl-reveal]').forEach(function (el) {
       revealObserver.observe(el);
     });
-
-    // Legacy fade-up support
-    var fadeObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          fadeObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.08 });
-    document.querySelectorAll('.fade-up').forEach(function (el) {
-      fadeObserver.observe(el);
-    });
   } else {
     document.querySelectorAll('[data-vl-reveal]').forEach(function (el) {
       el.classList.add('vl-revealed');
-    });
-    document.querySelectorAll('.fade-up').forEach(function (el) {
-      el.classList.add('visible');
     });
   }
 
@@ -352,34 +336,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Legacy .filter system (kept for backwards compat if old markup is present)
-  var filters = document.querySelectorAll('.filter');
-  var pcards  = document.querySelectorAll('.pcard');
-  if (filters.length) {
-    // Event delegation on a common ancestor
-    var filterBar = filters[0].parentElement;
-    if (filterBar) {
-      filterBar.addEventListener('click', function (e) {
-        var btn = e.target.closest('.filter');
-        if (!btn) return;
-        filters.forEach(function (b) { b.classList.remove('active'); });
-        btn.classList.add('active');
-        var f = btn.dataset.f;
-        pcards.forEach(function (card) {
-          var match = f === 'all' || card.dataset.cat === f;
-          if (match) {
-            card.style.display = '';
-            card.classList.remove('visible');
-            requestAnimationFrame(function () {
-              requestAnimationFrame(function () { card.classList.add('visible'); });
-            });
-          } else {
-            card.style.display = 'none';
-          }
-        });
-      });
-    }
-  }
 
 
   // ── 10. STICKY CATEGORY BAR ─────────────────────────────────
@@ -422,22 +378,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Legacy .pcard tilt
-  document.querySelectorAll('.pcard').forEach(function (card) {
-    card.addEventListener('mousemove', function (e) {
-      var r   = card.getBoundingClientRect();
-      var x   = e.clientX - r.left;
-      var y   = e.clientY - r.top;
-      var cx  = r.width  / 2;
-      var cy  = r.height / 2;
-      var rotX = ((y - cy) / cy) * -5;
-      var rotY = ((x - cx) / cx) *  5;
-      card.style.transform = 'translateY(-6px) perspective(700px) rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg)';
-    });
-    card.addEventListener('mouseleave', function () {
-      card.style.transform = '';
-    });
-  });
 
 
   // ── 12. RESERVE BUTTONS (prefill form) ──────────────────────
