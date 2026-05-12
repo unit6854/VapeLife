@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', function () {
   // ── 1. SCROLL PROGRESS BAR ──────────────────────────────────
   var scrollBar = document.getElementById('vlScrollProgress');
   var header = document.querySelector('#masthead, .site-header, #header, header.site-header, .header');
+  var scrollTrack = document.getElementById('vlScrollTrack');
+  var scrollThumb = document.getElementById('vlScrollThumb');
 
   // RAF ticking flag — shared by all scroll handlers so only one rAF
   // fires per frame regardless of how many listeners exist.
@@ -27,6 +29,16 @@ document.addEventListener('DOMContentLoaded', function () {
       header.classList.toggle('scrolled', window.scrollY > 40); // legacy class
     }
 
+    // Custom scrollbar thumb position
+    if (scrollThumb && scrollTrack) {
+      var tH = scrollTrack.clientHeight;
+      var docScrollH = document.documentElement.scrollHeight - window.innerHeight;
+      var thumbH2 = Math.max(40, Math.round(tH * (window.innerHeight / document.documentElement.scrollHeight)));
+      scrollThumb.style.height = thumbH2 + 'px';
+      var thumbTop = docScrollH > 0 ? (window.scrollY / docScrollH) * (tH - thumbH2) : 0;
+      scrollThumb.style.top = thumbTop + 'px';
+    }
+
     scrollTicking = false;
   }
 
@@ -37,6 +49,59 @@ document.addEventListener('DOMContentLoaded', function () {
       requestAnimationFrame(handleScroll);
     }
   }, { passive: true });
+
+
+  // ── 2. CUSTOM SCROLLBAR ─────────────────────────────────────
+  if (scrollTrack && scrollThumb) {
+    var sbIsDragging = false;
+    var sbDragStartY = 0;
+    var sbDragScrollTop = 0;
+
+    (function () {
+      var tH = scrollTrack.clientHeight;
+      scrollThumb.style.height = Math.max(40, Math.round(tH * (window.innerHeight / document.documentElement.scrollHeight))) + 'px';
+    })();
+
+    scrollTrack.addEventListener('click', function (e) {
+      if (sbIsDragging) return;
+      var rect = scrollTrack.getBoundingClientRect();
+      var thumbH = scrollThumb.clientHeight;
+      var tH = scrollTrack.clientHeight;
+      var ratio = Math.max(0, Math.min(1, (e.clientY - rect.top - thumbH / 2) / (tH - thumbH)));
+      window.scrollTo({ top: ratio * (document.documentElement.scrollHeight - window.innerHeight), behavior: 'smooth' });
+    });
+
+    scrollThumb.addEventListener('mousedown', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      sbIsDragging = true;
+      sbDragStartY = e.clientY;
+      sbDragScrollTop = window.scrollY;
+      scrollThumb.classList.add('is-dragging');
+      document.body.style.userSelect = 'none';
+    });
+
+    document.addEventListener('mousemove', function (e) {
+      if (!sbIsDragging) return;
+      var tH = scrollTrack.clientHeight;
+      var thumbH = scrollThumb.clientHeight;
+      var scrollRange = document.documentElement.scrollHeight - window.innerHeight;
+      var scrollDelta = ((e.clientY - sbDragStartY) / (tH - thumbH)) * scrollRange;
+      window.scrollTo({ top: Math.max(0, Math.min(scrollRange, sbDragScrollTop + scrollDelta)) });
+    });
+
+    document.addEventListener('mouseup', function () {
+      if (!sbIsDragging) return;
+      sbIsDragging = false;
+      scrollThumb.classList.remove('is-dragging');
+      document.body.style.userSelect = '';
+    });
+
+    window.addEventListener('resize', function () {
+      var tH = scrollTrack.clientHeight;
+      scrollThumb.style.height = Math.max(40, Math.round(tH * (window.innerHeight / document.documentElement.scrollHeight))) + 'px';
+    }, { passive: true });
+  }
 
 
   // ── 3. CUSTOM CURSOR ───────────────────────────────────────
